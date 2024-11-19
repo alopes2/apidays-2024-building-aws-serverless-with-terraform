@@ -1,0 +1,24 @@
+{
+  "name": "get-data",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "tsc": "tsc",
+    "build": "tsc && copyfiles package.json build/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.470.0",
+    "@aws-sdk/lib-dynamodb": "^3.470.0",
+    "aws-sdk": "^2.1515.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.130",
+    "copyfiles": "^2.4.1",
+    "typescript": "^5.3.3"
+  }
+}
