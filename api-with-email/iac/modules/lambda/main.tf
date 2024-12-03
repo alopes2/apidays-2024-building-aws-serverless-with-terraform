@@ -1,10 +1,18 @@
 resource "aws_iam_role" "iam_for_lambda" {
   name               = "${var.name}-lambda-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
-  inline_policy {
-    name   = "DefaultPolicy"
-    policy = data.aws_iam_policy_document.policies.json
-  }
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_logs" {
+  role       = aws_iam_role.iam_for_lambda.name
+  policy_arn = aws_iam_policy.lambda_policies.arn
+}
+
+resource "aws_iam_policy" "lambda_policies" {
+  name        = "lambda_policies_${aws_lambda_function.lambda.function_name}"
+  path        = "/"
+  description = "IAM policy for ${var.name} lambda function"
+  policy      = data.aws_iam_policy_document.policies.json
 }
 
 resource "aws_lambda_function" "lambda" {
