@@ -38,7 +38,7 @@ resource "aws_lambda_function" "lambda" {
   function_name = "get-data"
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "index.handler"
-  runtime       = "nodejs20.x"
+  runtime       = "nodejs22.x"
 }
 
 resource "aws_iam_policy" "lambda_policies" {

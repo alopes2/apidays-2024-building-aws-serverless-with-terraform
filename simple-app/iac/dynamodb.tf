@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "movies" {
-  name           = "gotech_world_movies"
+  name           = "apidays_data"
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1

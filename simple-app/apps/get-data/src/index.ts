@@ -2,7 +2,7 @@
 import {DynamoDBDocumentClient, GetCommand} from "@aws-sdk/lib-dynamodb";
 import {APIGatewayProxyEvent, APIGatewayProxyResult} from "aws-lambda";
 
-const tableName = "gotech_world_movies";
+const tableName = "apidays_data";
 
 type Movie = {
     title: string;

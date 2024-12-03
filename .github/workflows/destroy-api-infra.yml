@@ -1,15 +1,19 @@
-﻿name: Destroy Infrastructure
+name: Destroy Infrastructure
 on:
   workflow_dispatch:
 
 defaults:
   run:
-    working-directory: iac/
+    working-directory: api-with-email/iac/
 
 jobs:
   terraform:
     name: 'Terraform destroy'
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_account_id: ${{secrets.AWS_ACCOUNT_ID}}
+      TF_VAR_email_identity: ${{secrets.EMAIL}}
+      TF_VAR_destination_email: ${{secrets.EMAIL}}
     steps:
       # Checkout the repository to the GitHub Actions runner
       - name: Checkout
@@ -30,4 +34,5 @@ jobs:
         run: terraform init
 
       - name: Terraform Destroy
-        run: terraform destroy -auto-approve -input=false
+        run: |
+          terraform destroy -auto-approve -input=false -var-file="variables.tfvars"
