@@ -40,7 +40,7 @@ resource "aws_dynamodb_table_item" "scott_pilgrim" {
       ID    = { S = "2" },
       Title = { S = "Scott Pilgrim vs. the World" },
       Genres = { SS = [
-        "Action",
+        "Sci-Fi",
         "Comedy",
         ]
       },
